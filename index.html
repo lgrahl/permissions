@@ -1029,7 +1029,7 @@ Possible extra rowspan handling
 		}
 	/* } */
 
-	@supports (display:grid) {
+	@supports (display:grid) and (display:contents) {
 		/* Use #toc over .toc to override non-@supports rules. */
 		#toc {
 			display: grid;
@@ -1212,7 +1212,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 8ac92da89bb2253e0da87e20a9b9caa745f5f5b6" name="generator">
+  <meta content="Bikeshed version 5a2c04fbf9f3418b378c5d733b60fe6fc575091b" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
 <style>/* style-md-lists */
 
@@ -1471,7 +1471,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-03-25">25 March 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-08-05">5 August 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1955,7 +1955,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="permission-revocation-algorithm">permission revocation algorithm</dfn> 
      <dd> Takes no arguments. Updates any other parts of the implementation that
       need to be kept in sync with changes in the results of <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①③">permission
-      states</a> or <a data-link-type="dfn" href="#extra-permission-data" id="ref-for-extra-permission-data②">extra permission data</a>. Run by <a href="#reacting-to-revocation">§5.3 Reacting to users revoking permission</a>.
+      states</a> or <a data-link-type="dfn" href="#extra-permission-data" id="ref-for-extra-permission-data②">extra permission data</a>. Run by <a href="#reacting-to-revocation">§ 5.3 Reacting to users revoking permission</a>.
       If unspecified, this defaults to doing nothing. 
     </dl>
     <p> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="boolean-feature">boolean feature</dfn> is a <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①⓪">powerful feature</a> with all
@@ -2107,8 +2107,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </section>
     <section>
      <h3 class="heading settled" data-level="10.14" id="direct-connection"><span class="secno">10.14. </span><span class="content"> Direct Connection </span><a class="self-link" href="#direct-connection"></a></h3>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-direct-connection"><code>"direct-connection"</code></dfn> permission is the permission associated with the usage of the <i>Direct
-      Connection API</i> of <a data-link-type="biblio" href="#biblio-webrtc">[webrtc]</a>. </p>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-direct-connection"><code>"direct-connection"</code></dfn> permission upgrades to a less strict IP handling mode of <a data-link-type="biblio" href="#biblio-rtcweb-ip-handling">[rtcweb-ip-handling]</a>. </p>
     </section>
    </section>
    <section>
@@ -2822,7 +2821,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
      <li><span class="dfn-paneled" id="term-for-sec-code-realms" style="color:initial">realm</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[FEATURE-POLICY]</a> defines the following terms:
+    <a data-link-type="biblio">[feature-policy-1]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-policy-controlled-feature" style="color:initial">policy-controlled feature</span>
     </ul>
@@ -2866,7 +2865,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
      <li><span class="dfn-paneled" id="term-for-dom-mediadevices-getusermedia" style="color:initial">getUserMedia()</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[permissions-request-1]</a> defines the following terms:
+    <a data-link-type="biblio">[PERMISSIONS-REQUEST]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-boolean-permission-request-algorithm" style="color:initial">boolean permission request algorithm</span>
      <li><span class="dfn-paneled" id="term-for-permission-request-algorithm" style="color:initial">permission request algorithm</span>
@@ -2937,16 +2936,16 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-ecmascript">[ECMASCRIPT]
    <dd><a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>. URL: <a href="https://tc39.github.io/ecma262/">https://tc39.github.io/ecma262/</a>
-   <dt id="biblio-feature-policy">[FEATURE-POLICY]
-   <dd><a href="https://wicg.github.io/feature-policy/">Feature Policy</a>. Living Standard. URL: <a href="https://wicg.github.io/feature-policy/">https://wicg.github.io/feature-policy/</a>
+   <dt id="biblio-feature-policy-1">[FEATURE-POLICY-1]
+   <dd>Ian Clelland. <a href="https://www.w3.org/TR/feature-policy-1/">Feature Policy</a>. 16 April 2019. WD. URL: <a href="https://www.w3.org/TR/feature-policy-1/">https://www.w3.org/TR/feature-policy-1/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/">Infra Standard</a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
-   <dt id="biblio-permissions-request-1">[PERMISSIONS-REQUEST-1]
-   <dd>Requesting Permissions Spec URL: <a href="https://wicg.github.io/permissions-request/">https://wicg.github.io/permissions-request/</a>
+   <dt id="biblio-permissions-request">[PERMISSIONS-REQUEST]
+   <dd><a href="https://wicg.github.io/permissions-request/">Requesting Permissions</a>. cg-draft. URL: <a href="https://wicg.github.io/permissions-request/">https://wicg.github.io/permissions-request/</a>
    <dt id="biblio-promises-guide">[PROMISES-GUIDE]
-   <dd>Domenic Denicola. <a href="https://www.w3.org/2001/tag/doc/promises-guide">Writing Promise-Using Specifications</a>. 16 February 2016. TAG Finding. URL: <a href="https://www.w3.org/2001/tag/doc/promises-guide">https://www.w3.org/2001/tag/doc/promises-guide</a>
+   <dd>Domenic Denicola. <a href="https://www.w3.org/2001/tag/doc/promises-guide">Writing Promise-Using Specifications</a>. 9 November 2018. TAG Finding. URL: <a href="https://www.w3.org/2001/tag/doc/promises-guide">https://www.w3.org/2001/tag/doc/promises-guide</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-secure-contexts">[SECURE-CONTEXTS]
@@ -2954,7 +2953,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dt id="biblio-storage">[STORAGE]
    <dd>Anne van Kesteren. <a href="https://storage.spec.whatwg.org/">Storage Standard</a>. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a>
    <dt id="biblio-uievents">[UIEVENTS]
-   <dd>Gary Kacmarcik; Travis Leithead; Doug Schepers. <a href="https://www.w3.org/TR/uievents/">UI Events</a>. 8 November 2018. WD. URL: <a href="https://www.w3.org/TR/uievents/">https://www.w3.org/TR/uievents/</a>
+   <dd>Gary Kacmarcik; Travis Leithead; Doug Schepers. <a href="https://www.w3.org/TR/uievents/">UI Events</a>. 30 May 2019. WD. URL: <a href="https://www.w3.org/TR/uievents/">https://www.w3.org/TR/uievents/</a>
    <dt id="biblio-web-bluetooth">[WEB-BLUETOOTH]
    <dd>Jeffrey Yasskin. <a href="https://webbluetoothcg.github.io/web-bluetooth/">Web Bluetooth</a>. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a>
    <dt id="biblio-webdriver">[WebDriver]
@@ -2971,13 +2970,13 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dt id="biblio-audio-output">[AUDIO-OUTPUT]
    <dd>Justin Uberti; Guido Urdaneta. <a href="https://www.w3.org/TR/audio-output/">Audio Output Devices API</a>. 3 October 2017. CR. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a>
    <dt id="biblio-background-fetch">[BACKGROUND-FETCH]
-   <dd><a href="https://wicg.github.io/background-fetch/">Background Fetch</a>. Living Standard. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a>
+   <dd><a href="https://wicg.github.io/background-fetch/">Background Fetch</a>. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a>
    <dt id="biblio-clipboard-apis">[CLIPBOARD-APIS]
-   <dd>Gary Kacmarcik; Grisha Lyukshin; Hallvord Steen. <a href="https://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a>. 8 November 2018. WD. URL: <a href="https://www.w3.org/TR/clipboard-apis/">https://www.w3.org/TR/clipboard-apis/</a>
+   <dd>Gary Kacmarcik; Grisha Lyukshin. <a href="https://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a>. 5 June 2019. WD. URL: <a href="https://www.w3.org/TR/clipboard-apis/">https://www.w3.org/TR/clipboard-apis/</a>
    <dt id="biblio-geolocation-api">[geolocation-API]
    <dd>Andrei Popescu. <a href="https://www.w3.org/TR/geolocation-API/">Geolocation API Specification 2nd Edition</a>. 8 November 2016. REC. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a>
    <dt id="biblio-getusermedia">[GETUSERMEDIA]
-   <dd>Daniel Burnett; et al. <a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a>. 3 October 2017. CR. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
+   <dd>Daniel Burnett; et al. <a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a>. 2 July 2019. CR. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
    <dt id="biblio-gyroscope">[GYROSCOPE]
    <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a>. 7 March 2019. WD. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a>
    <dt id="biblio-magnetometer">[MAGNETOMETER]
@@ -2985,15 +2984,15 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dt id="biblio-notifications">[NOTIFICATIONS]
    <dd>Anne van Kesteren. <a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a>. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
    <dt id="biblio-push-api">[PUSH-API]
-   <dd>Peter Beverloo; et al. <a href="https://www.w3.org/TR/push-api/">Push API</a>. 26 October 2018. WD. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+   <dd>Peter Beverloo; Martin Thomson. <a href="https://www.w3.org/TR/push-api/">Push API</a>. 24 July 2019. WD. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+   <dt id="biblio-rtcweb-ip-handling">[RTCWEB-IP-HANDLING]
+   <dd>Guo-wei Shieh; Justin Uberti. <a href="https://tools.ietf.org/html/draft-ietf-rtcweb-ip-handling">WebRTC IP Address Handling Recommendations</a>. 20 March 2016. Active Internet-Draft. URL: <a href="https://tools.ietf.org/html/draft-ietf-rtcweb-ip-handling">https://tools.ietf.org/html/draft-ietf-rtcweb-ip-handling</a>
    <dt id="biblio-screen-capture">[SCREEN-CAPTURE]
    <dd>Martin Thomson; Keith Griffin. <a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a>. 14 July 2016. WD. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a>
    <dt id="biblio-web-background-sync">[WEB-BACKGROUND-SYNC]
-   <dd><a href="https://wicg.github.io/BackgroundSync/spec/">Web Background Synchronization</a>. Living Standard. URL: <a href="https://wicg.github.io/BackgroundSync/spec/">https://wicg.github.io/BackgroundSync/spec/</a>
+   <dd><a href="https://wicg.github.io/BackgroundSync/spec/">Web Background Synchronization</a>. cg-draft. URL: <a href="https://wicg.github.io/BackgroundSync/spec/">https://wicg.github.io/BackgroundSync/spec/</a>
    <dt id="biblio-webmidi">[WEBMIDI]
    <dd>Chris Wilson; Jussi Kalliokoski. <a href="https://www.w3.org/TR/webmidi/">Web MIDI API</a>. 17 March 2015. WD. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a>
-   <dt id="biblio-webrtc">[WEBRTC]
-   <dd>Adam Bergkvist; et al. <a href="https://www.w3.org/TR/webrtc/">WebRTC 1.0: Real-time Communication Between Browsers</a>. 27 September 2018. CR. URL: <a href="https://www.w3.org/TR/webrtc/">https://www.w3.org/TR/webrtc/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl highlight def"><c- b>dictionary</c-> <a href="#dictdef-permissiondescriptor"><code><c- g>PermissionDescriptor</c-></code></a> {
